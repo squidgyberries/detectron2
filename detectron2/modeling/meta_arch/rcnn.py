@@ -206,7 +206,7 @@ class GeneralizedRCNN(nn.Module):
         if detected_instances is None:
             if self.proposal_generator is not None:
                 proposals, _ = self.proposal_generator(images, features, None)
-                print(proposals)
+                print(proposals.get("proposal_boxes"))
             else:
                 assert "proposals" in batched_inputs[0]
                 proposals = [x["proposals"].to(self.device) for x in batched_inputs]
